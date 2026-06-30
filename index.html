@@ -6,79 +6,208 @@
 <title>DeepGenX Pty Ltd | Enterprise AI Solutions</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
   <div class="container nav-container">
+
     <div class="logo">
-      <img src="assets/deepgenx-logo.png" alt="DeepGenX Logo">
+      <a href="#">
+        <img src="assets/deepgenx-logo.png" alt="DeepGenX Logo">
+      </a>
     </div>
-    <nav>
+
+    <button class="menu-toggle" aria-label="Toggle Navigation">
+      ☰
+    </button>
+
+    <nav class="nav-links">
       <a href="#services">Services</a>
       <a href="#industries">Industries</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
+
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <h1>Enterprise AI & Digital Transformation</h1>
-    <p>Helping organisations automate operations, unlock insights and accelerate growth with modern AI solutions.</p>
-    <a href="#contact" class="btn">Book a Consultation</a>
+    <div class="hero-content">
+      <h1>Enterprise AI & Digital Transformation</h1>
+
+      <p>
+        Helping organisations automate operations,
+        unlock insights and accelerate growth with
+        modern AI solutions.
+      </p>
+
+      <a href="#contact" class="btn">
+        Book a Consultation
+      </a>
+    </div>
   </div>
 </section>
 
 <section id="services" class="section">
   <div class="container">
+
     <h2>Our Services</h2>
+
     <div class="grid">
-      <div class="card"><h3>AI Strategy</h3><p>Roadmaps and governance for AI adoption.</p></div>
-      <div class="card"><h3>Automation</h3><p>Reduce manual effort with intelligent workflows.</p></div>
-      <div class="card"><h3>Analytics</h3><p>Transform data into actionable insights.</p></div>
+
+      <div class="card">
+        <h3>AI Strategy</h3>
+        <p>Roadmaps and governance for AI adoption.</p>
+      </div>
+
+      <div class="card">
+        <h3>Automation</h3>
+        <p>Reduce manual effort with intelligent workflows.</p>
+      </div>
+
+      <div class="card">
+        <h3>Analytics</h3>
+        <p>Transform data into actionable insights.</p>
+      </div>
+
     </div>
+
   </div>
 </section>
 
 <section class="section dark">
   <div class="container">
-    <img class="feature-img" src="assets/ai-dashboard.jpg" alt="AI Dashboard">
+
+    <div class="feature-image-container">
+      <img
+        class="feature-img"
+        src="assets/ai-dashboard.jpg"
+        alt="AI Analytics Dashboard"
+        loading="lazy"
+      >
+    </div>
+
   </div>
 </section>
 
 <section id="industries" class="section">
   <div class="container">
+
     <h2>Industries</h2>
+
     <div class="industry-grid">
-      <img src="assets/finance.jpg">
-      <img src="assets/healthcare.jpg">
-      <img src="assets/retail.jpg">
-      <img src="assets/manufacturing.jpg">
+
+      <div class="industry-card">
+        <img
+          src="assets/finance.jpg"
+          alt="Finance Industry"
+          loading="lazy"
+        >
+        <h3>Finance</h3>
+      </div>
+
+      <div class="industry-card">
+        <img
+          src="assets/healthcare.jpg"
+          alt="Healthcare Industry"
+          loading="lazy"
+        >
+        <h3>Healthcare</h3>
+      </div>
+
+      <div class="industry-card">
+        <img
+          src="assets/retail.jpg"
+          alt="Retail Industry"
+          loading="lazy"
+        >
+        <h3>Retail</h3>
+      </div>
+
+      <div class="industry-card">
+        <img
+          src="assets/manufacturing.jpg"
+          alt="Manufacturing Industry"
+          loading="lazy"
+        >
+        <h3>Manufacturing</h3>
+      </div>
+
     </div>
+
   </div>
 </section>
 
 <section id="about" class="section">
   <div class="container">
+
     <h2>Why DeepGenX</h2>
-    <img class="team-img" src="assets/team-consulting.jpg" alt="Team">
-    <p>Trusted enterprise partner focused on measurable business outcomes.</p>
+
+    <div class="team-image-container">
+      <img
+        class="team-img"
+        src="assets/team-consulting.jpg"
+        alt="DeepGenX Consulting Team"
+        loading="lazy"
+      >
+    </div>
+
+    <p>
+      Trusted enterprise partner focused on measurable
+      business outcomes through AI innovation, automation,
+      and digital transformation.
+    </p>
+
   </div>
 </section>
 
 <section id="contact" class="section dark">
   <div class="container">
+
     <h2>Contact Us</h2>
-    <form netlify>
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Message"></textarea>
-      <button type="submit">Send</button>
+
+    <form name="contact" method="POST" data-netlify="true">
+
+      <input type="hidden" name="form-name" value="contact">
+
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        required
+      >
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        required
+      >
+
+      <textarea
+        name="message"
+        placeholder="Message"
+        rows="5"
+      ></textarea>
+
+      <button type="submit">
+        Send Message
+      </button>
+
     </form>
+
   </div>
 </section>
 
+<footer>
+  <div class="container">
+    <p>&copy; 2026 DeepGenX Pty Ltd. All Rights Reserved.</p>
+  </div>
+</footer>
+
 <script src="script.js"></script>
+
 </body>
 </html>
