@@ -497,3 +497,118 @@ footer {
         height: 40px;
     }
 }
+/* ==========================
+   Upcoming Games Design
+========================== */
+
+.games-section {
+    background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+    border-top: 1px solid #f1f5f9;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.game-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+}
+
+.game-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #10b981; /* Success Green */
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 30px;
+    letter-spacing: 0.5px;
+}
+
+.game-badge.upcoming {
+    background: var(--primary); /* DeepGenX Blue */
+}
+
+.game-content {
+    padding: 2.5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.game-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.game-genre {
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+
+.game-description {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.game-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    padding-top: 1rem;
+    border-top: 1px dashed #e2e8f0;
+    margin-bottom: 1.5rem;
+}
+
+.btn-game-notify {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-game-notify:hover {
+    background: var(--primary);
+}
+
+/* Responsive adjustment for games layout */
+@media(max-width: 992px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

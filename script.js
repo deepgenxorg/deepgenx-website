@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Fade-in Scroll Animations Setup
+  // Fade-in Scroll Animations Setup (Added .game-card here)
   const animatedElements = document.querySelectorAll(
-    ".service-card, .industry-card, .partner-logos img, .about-image, .about-content"
+    ".service-card, .industry-card, .partner-logos img, .about-image, .about-content, .game-card"
   );
 
   const observer = new IntersectionObserver(
@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.querySelector("#contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
-      // Netlify handles implementation parsing naturally; this provides client UX lifecycle
       const submitButton = contactForm.querySelector('button[type="submit"]');
 
       if (submitButton) {
@@ -80,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
         submitButton.disabled = true;
         submitButton.textContent = "Sending Global Request...";
 
-        // Yield execution brief moment to allow Form lifecycle dispatch
         setTimeout(() => {
           alert("Thank you for contacting DeepGenX. Our consulting unit will contact you shortly.");
           contactForm.reset();
@@ -109,4 +107,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-});
+
+  // Game Notification Handler (Safely inside DOMContentLoaded now)
+  document.querySelectorAll(".btn-game-notify").forEach((btn) => {
+    btn.addEventListener("click", function() {
+      const gameName = this.getAttribute("data-game");
+      alert(`Excellent choice! You've been added to the early-access pipeline for "${gameName}". We'll update you as soon as the Android build clears Google Play staging.`);
+      this.textContent = "Registered ✓";
+      this.style.background = "#10b981";
+      this.disabled = true;
+    });
+  });
+
+}); // End of DOMContentLoaded
