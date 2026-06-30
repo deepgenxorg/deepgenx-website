@@ -1,10 +1,18 @@
-window.addEventListener("scroll", () => {
-    document.querySelectorAll(".card").forEach(card => {
-        const rect = card.getBoundingClientRect();
-
-        if(rect.top < window.innerHeight - 100){
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
         }
     });
+},{
+    threshold:0.15
+});
+
+document.querySelectorAll(
+    ".service-card, .stat-card, .industry-grid div, .partner-grid div"
+).forEach(el=>{
+
+    el.classList.add("hidden");
+    observer.observe(el);
+
 });
