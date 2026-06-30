@@ -1,370 +1,166 @@
-/* ==========================================
-   DeepGenX Enterprise Website
-   script.js
-========================================== */
+// DeepGenX Website JavaScript
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Mobile Navigation Toggle
+  const navToggle = document.querySelector(".nav-toggle");
+  const navMenu = document.querySelector(".nav-menu");
 
-    /* ==========================
-       Fade-Up Animation
-    ========================== */
+  if (navToggle && navMenu) {
+    navToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      navToggle.classList.toggle("active");
+    });
 
-    const fadeElements = document.querySelectorAll(".fade-up");
+    document.querySelectorAll(".nav-menu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        navToggle.classList.remove("active");
+      });
+    });
+  }
 
-    const fadeObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                    fadeObserver.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.15
+  // Smooth Scrolling
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const target = document.querySelector(this.getAttribute("href"));
+
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: "smooth",
+        });
+      }
+    });
+  });
+
+  // Navbar Background on Scroll
+  const navbar = document.querySelector(".navbar");
+
+  window.addEventListener("scroll", () => {
+    if (!navbar) return;
+
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
+  // Fade-in Animations
+  const animatedElements = document.querySelectorAll(
+    ".service-card, .industry-card, .feature-card, .about-card"
+  );
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
         }
-    );
+      });
+    },
+    {
+      threshold: 0.15,
+    }
+  );
 
-    fadeElements.forEach(el => fadeObserver.observe(el));
+  animatedElements.forEach((el) => {
+    el.classList.add("hidden");
+    observer.observe(el);
+  });
 
+  // Contact Form
+  const contactForm = document.querySelector("#contact-form");
 
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    /* ==========================
-       Animated Stats Counter
-    ========================== */
+      const submitButton = contactForm.querySelector(
+        'button[type="submit"]'
+      );
 
-    const counters = document.querySelectorAll("[data-counter]");
+      if (submitButton) {
+        const originalText = submitButton.textContent;
 
-    const animateCounter = (counter) => {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
 
-        const target = parseInt(counter.dataset.counter);
-        const duration = 1800;
+        setTimeout(() => {
+          alert(
+            "Thank you for contacting DeepGenX. We'll get back to you shortly."
+          );
 
-        let start = 0;
-        const increment = target / (duration / 16);
+          contactForm.reset();
 
-        const updateCounter = () => {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }, 1200);
+      }
+    });
+  }
 
-            start += increment;
+  // Counter Animation
+  const counters = document.querySelectorAll(".counter");
 
-            if (start < target) {
+  const runCounter = (counter) => {
+    const target = parseInt(counter.dataset.target, 10);
+    const duration = 1500;
+    const increment = target / (duration / 16);
 
-                counter.textContent =
-                    Math.floor(start).toLocaleString();
+    let current = 0;
 
-                requestAnimationFrame(updateCounter);
+    const update = () => {
+      current += increment;
 
-            } else {
-
-                counter.textContent =
-                    target.toLocaleString();
-            }
-        };
-
-        updateCounter();
+      if (current < target) {
+        counter.textContent = Math.floor(current);
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = target;
+      }
     };
 
-    const counterObserver = new IntersectionObserver(
-        entries => {
+    update();
+  };
 
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    animateCounter(entry.target);
-
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-
-        },
-        {
-            threshold: 0.4
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          runCounter(entry.target);
+          counterObserver.unobserve(entry.target);
         }
-    );
-
-    counters.forEach(counter => {
-        counterObserver.observe(counter);
-    });
-
-
-
-    /* ==========================
-       Navbar Background on Scroll
-    ========================== */
-
-    const header = document.querySelector("header");
-
-    window.addEventListener("scroll", () => {
-
-        if (window.scrollY > 50) {
-
-            header.style.boxShadow =
-                "0 10px 25px rgba(15,23,42,.08)";
-
-            header.style.background =
-                "rgba(255,255,255,.95)";
-
-        } else {
-
-            header.style.boxShadow = "none";
-
-            header.style.background =
-                "rgba(255,255,255,.88)";
-        }
-    });
-
-
-
-    /* ==========================
-       Smooth Anchor Scrolling
-    ========================== */
-
-    document.querySelectorAll('a[href^="#"]')
-        .forEach(anchor => {
-
-            anchor.addEventListener("click", function (e) {
-
-                const targetID =
-                    this.getAttribute("href");
-
-                if (targetID === "#") return;
-
-                const target =
-                    document.querySelector(targetID);
-
-                if (!target) return;
-
-                e.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            });
-
-        });
-
-
-
-    /* ==========================
-       Contact Form Validation
-    ========================== */
-
-    const form =
-        document.querySelector(".contact-form");
-
-    if (form) {
-
-        form.addEventListener("submit", function (e) {
-
-            e.preventDefault();
-
-            const name =
-                form.querySelector('input[name="name"]');
-
-            const email =
-                form.querySelector('input[name="email"]');
-
-            const company =
-                form.querySelector('input[name="company"]');
-
-            const message =
-                form.querySelector('textarea[name="message"]');
-
-            if (
-                !name.value.trim() ||
-                !email.value.trim() ||
-                !message.value.trim()
-            ) {
-
-                alert(
-                    "Please complete all required fields."
-                );
-
-                return;
-            }
-
-            const emailRegex =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailRegex.test(email.value)) {
-
-                alert(
-                    "Please enter a valid email address."
-                );
-
-                return;
-            }
-
-            alert(
-                "Thank you. A DeepGenX consultant will contact you shortly."
-            );
-
-            form.reset();
-
-        });
+      });
+    },
+    {
+      threshold: 0.5,
     }
+  );
 
-
-
-    /* ==========================
-       Hero Card Hover Effect
-    ========================== */
-
-    const cards =
-        document.querySelectorAll(
-            ".service-card, .industry-card, .feature"
-        );
-
-    cards.forEach(card => {
-
-        card.addEventListener("mouseenter", () => {
-
-            card.style.transform =
-                "translateY(-8px)";
-        });
-
-        card.addEventListener("mouseleave", () => {
-
-            card.style.transform =
-                "translateY(0)";
-        });
-
-    });
-
-
-
-    /* ==========================
-       Button Ripple Effect
-    ========================== */
-
-    const buttons =
-        document.querySelectorAll(".btn");
-
-    buttons.forEach(button => {
-
-        button.addEventListener("click", function (e) {
-
-            const ripple =
-                document.createElement("span");
-
-            const rect =
-                this.getBoundingClientRect();
-
-            const size =
-                Math.max(rect.width, rect.height);
-
-            ripple.style.width =
-                ripple.style.height =
-                `${size}px`;
-
-            ripple.style.position = "absolute";
-            ripple.style.borderRadius = "50%";
-            ripple.style.pointerEvents = "none";
-
-            ripple.style.left =
-                `${e.clientX - rect.left - size / 2}px`;
-
-            ripple.style.top =
-                `${e.clientY - rect.top - size / 2}px`;
-
-            ripple.style.background =
-                "rgba(255,255,255,.35)";
-
-            ripple.style.transform =
-                "scale(0)";
-
-            ripple.style.animation =
-                "ripple .6s ease-out";
-
-            this.style.position = "relative";
-            this.style.overflow = "hidden";
-
-            this.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-
-        });
-
-    });
-
-
-
-    /* ==========================
-       Active Nav Link Highlight
-    ========================== */
-
-    const sections =
-        document.querySelectorAll("section[id]");
-
-    const navLinks =
-        document.querySelectorAll(".nav-links a");
-
-    window.addEventListener("scroll", () => {
-
-        let current = "";
-
-        sections.forEach(section => {
-
-            const sectionTop =
-                section.offsetTop - 120;
-
-            const sectionHeight =
-                section.clientHeight;
-
-            if (
-                pageYOffset >= sectionTop &&
-                pageYOffset <
-                sectionTop + sectionHeight
-            ) {
-                current = section.getAttribute("id");
-            }
-
-        });
-
-        navLinks.forEach(link => {
-
-            link.classList.remove("active");
-
-            if (
-                link.getAttribute("href") ===
-                `#${current}`
-            ) {
-                link.classList.add("active");
-            }
-
-        });
-
-    });
-
+  counters.forEach((counter) => {
+    counterObserver.observe(counter);
+  });
 });
 
+// Utility: Scroll to Top Button
+const scrollBtn = document.querySelector("#scrollTop");
 
-/* ==========================================
-   Dynamic Ripple Animation Style
-========================================== */
-
-const rippleStyle = document.createElement("style");
-
-rippleStyle.innerHTML = `
-@keyframes ripple {
-    from{
-        transform:scale(0);
-        opacity:1;
+if (scrollBtn) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add("visible");
+    } else {
+      scrollBtn.classList.remove("visible");
     }
-    to{
-        transform:scale(4);
-        opacity:0;
-    }
-}
+  });
 
-.nav-links a.active{
-    color:#2563eb;
-    font-weight:700;
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 }
-`;
-
-document.head.appendChild(rippleStyle);
