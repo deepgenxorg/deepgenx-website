@@ -1,6 +1,6 @@
 // DeepGenX Website JavaScript
-
 document.addEventListener("DOMContentLoaded", () => {
+  
   // Mobile Navigation Toggle
   const navToggle = document.querySelector(".nav-toggle");
   const navMenu = document.querySelector(".nav-menu");
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navToggle.classList.toggle("active");
     });
 
+    // Close menu when links are clicked
     document.querySelectorAll(".nav-menu a").forEach((link) => {
       link.addEventListener("click", () => {
         navMenu.classList.remove("active");
@@ -19,13 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Smooth Scrolling
+  // Smooth Scrolling with Header Offset Fix
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
-
       const target = document.querySelector(this.getAttribute("href"));
-
       if (target) {
         window.scrollTo({
           top: target.offsetTop - 80,
@@ -35,12 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Navbar Background on Scroll
+  // Navbar Background Alpha Layer on Scroll
   const navbar = document.querySelector(".navbar");
-
   window.addEventListener("scroll", () => {
     if (!navbar) return;
-
     if (window.scrollY > 50) {
       navbar.classList.add("scrolled");
     } else {
@@ -48,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Fade-in Animations
+  // Fade-in Scroll Animations Setup
   const animatedElements = document.querySelectorAll(
-    ".service-card, .industry-card, .feature-card, .about-card"
+    ".service-card, .industry-card, .partner-logos img, .about-image, .about-content"
   );
 
   const observer = new IntersectionObserver(
@@ -62,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     {
-      threshold: 0.15,
+      threshold: 0.1,
     }
   );
 
@@ -71,96 +68,45 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 
-  // Contact Form
+  // Contact Form Interception & Micro-feedback
   const contactForm = document.querySelector("#contact-form");
-
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const submitButton = contactForm.querySelector(
-        'button[type="submit"]'
-      );
+      // Netlify handles implementation parsing naturally; this provides client UX lifecycle
+      const submitButton = contactForm.querySelector('button[type="submit"]');
 
       if (submitButton) {
         const originalText = submitButton.textContent;
-
         submitButton.disabled = true;
-        submitButton.textContent = "Sending...";
+        submitButton.textContent = "Sending Global Request...";
 
+        // Yield execution brief moment to allow Form lifecycle dispatch
         setTimeout(() => {
-          alert(
-            "Thank you for contacting DeepGenX. We'll get back to you shortly."
-          );
-
+          alert("Thank you for contacting DeepGenX. Our consulting unit will contact you shortly.");
           contactForm.reset();
-
           submitButton.disabled = false;
           submitButton.textContent = originalText;
-        }, 1200);
+        }, 1500);
       }
     });
   }
 
-  // Counter Animation
-  const counters = document.querySelectorAll(".counter");
-
-  const runCounter = (counter) => {
-    const target = parseInt(counter.dataset.target, 10);
-    const duration = 1500;
-    const increment = target / (duration / 16);
-
-    let current = 0;
-
-    const update = () => {
-      current += increment;
-
-      if (current < target) {
-        counter.textContent = Math.floor(current);
-        requestAnimationFrame(update);
+  // Utility: Scroll to Top Button Action Hook
+  const scrollBtn = document.querySelector("#scrollTop");
+  if (scrollBtn) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        scrollBtn.classList.add("visible");
       } else {
-        counter.textContent = target;
+        scrollBtn.classList.remove("visible");
       }
-    };
-
-    update();
-  };
-
-  const counterObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          runCounter(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.5,
-    }
-  );
-
-  counters.forEach((counter) => {
-    counterObserver.observe(counter);
-  });
-});
-
-// Utility: Scroll to Top Button
-const scrollBtn = document.querySelector("#scrollTop");
-
-if (scrollBtn) {
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      scrollBtn.classList.add("visible");
-    } else {
-      scrollBtn.classList.remove("visible");
-    }
-  });
-
-  scrollBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
     });
-  });
-}
+
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
+});

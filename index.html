@@ -1,213 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeepGenX Pty Ltd | Enterprise AI Solutions</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepGenX Pty Ltd | Enterprise AI Solutions</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-  <div class="container nav-container">
+<header class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="#">
+                <img src="assets/deepgenx-logo.png" alt="DeepGenX Logo">
+            </a>
+        </div>
 
-    <div class="logo">
-      <a href="#">
-        <img src="assets/deepgenx-logo.png" alt="DeepGenX Logo">
-      </a>
+        <button class="nav-toggle" aria-label="Toggle Navigation">
+            ☰
+        </button>
+
+        <nav class="nav-menu">
+            <a href="#services">Services</a>
+            <a href="#industries">Industries</a>
+            <a href="#partners">Integrations</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </div>
-
-    <button class="menu-toggle" aria-label="Toggle Navigation">
-      ☰
-    </button>
-
-    <nav class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#industries">Industries</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-  </div>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <h1>Enterprise AI & Digital Transformation</h1>
-
-      <p>
-        Helping organisations automate operations,
-        unlock insights and accelerate growth with
-        modern AI solutions.
-      </p>
-
-      <a href="#contact" class="btn">
-        Book a Consultation
-      </a>
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <img src="assets/deepgenx-logo.png" alt="DeepGenX Corporate Logo" class="hero-logo">
+            <h1>Enterprise AI & Digital Transformation</h1>
+            <p>
+                Helping organisations automate operations, unlock complex insights, and accelerate growth with enterprise-ready AI solutions.
+            </p>
+            <a href="#contact" class="btn-primary">
+                Book a Consultation
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="assets/ai-dashboard.jpg" alt="AI Analytics Interface Preview">
+        </div>
     </div>
-  </div>
 </section>
 
-<section id="services" class="section">
-  <div class="container">
-
-    <h2>Our Services</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>AI Strategy</h3>
-        <p>Roadmaps and governance for AI adoption.</p>
-      </div>
-
-      <div class="card">
-        <h3>Automation</h3>
-        <p>Reduce manual effort with intelligent workflows.</p>
-      </div>
-
-      <div class="card">
-        <h3>Analytics</h3>
-        <p>Transform data into actionable insights.</p>
-      </div>
-
+<section id="services" class="services">
+    <div class="container">
+        <h2>Our Services</h2>
+        <p class="section-subtitle">We design, deploy, and govern secure AI frameworks optimized for high-performance scale.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>AI Strategy</h3>
+                <p>Tailored architectural roadmaps, risk assessments, and governance protocols for responsible AI adoption.</p>
+            </div>
+            <div class="service-card">
+                <h3>Automation</h3>
+                <p>Reduce manual overhead and eradicate bottlenecks with intelligent, agentic workflows and NLP pipelines.</p>
+            </div>
+            <div class="service-card">
+                <h3>Analytics</h3>
+                <p>Transform multi-modal raw data spaces into real-time, high-fidelity actionable insights.</p>
+            </div>
+        </div>
     </div>
-
-  </div>
 </section>
 
-<section class="section dark">
-  <div class="container">
-
-    <div class="feature-image-container">
-      <img
-        class="feature-img"
-        src="assets/ai-dashboard.jpg"
-        alt="AI Analytics Dashboard"
-        loading="lazy"
-      >
+<section class="dashboard-section">
+    <div class="container">
+        <div class="dashboard-image">
+            <img src="assets/ai-dashboard.jpg" alt="AI Operations Analytics Dashboard" loading="lazy">
+        </div>
     </div>
-
-  </div>
 </section>
 
 <section id="industries" class="section">
-  <div class="container">
-
-    <h2>Industries</h2>
-
-    <div class="industry-grid">
-
-      <div class="industry-card">
-        <img
-          src="assets/finance.jpg"
-          alt="Finance Industry"
-          loading="lazy"
-        >
-        <h3>Finance</h3>
-      </div>
-
-      <div class="industry-card">
-        <img
-          src="assets/healthcare.jpg"
-          alt="Healthcare Industry"
-          loading="lazy"
-        >
-        <h3>Healthcare</h3>
-      </div>
-
-      <div class="industry-card">
-        <img
-          src="assets/retail.jpg"
-          alt="Retail Industry"
-          loading="lazy"
-        >
-        <h3>Retail</h3>
-      </div>
-
-      <div class="industry-card">
-        <img
-          src="assets/manufacturing.jpg"
-          alt="Manufacturing Industry"
-          loading="lazy"
-        >
-        <h3>Manufacturing</h3>
-      </div>
-
+    <div class="container">
+        <h2>Industries We Serve</h2>
+        <p class="section-subtitle">Deep industry domain expertise built directly into our customized machine learning systems.</p>
+        <div class="industries-grid">
+            <div class="industry-card">
+                <img src="assets/finance.jpg" alt="Finance Solutions Asset" loading="lazy">
+                <div class="industry-card-content">
+                    <h3>Finance</h3>
+                </div>
+            </div>
+            <div class="industry-card">
+                <img src="assets/healthcare.jpg" alt="Healthcare AI Solutions Asset" loading="lazy">
+                <div class="industry-card-content">
+                    <h3>Healthcare</h3>
+                </div>
+            </div>
+            <div class="industry-card">
+                <img src="assets/retail.jpg" alt="Retail Automation Asset" loading="lazy">
+                <div class="industry-card-content">
+                    <h3>Retail</h3>
+                </div>
+            </div>
+            <div class="industry-card">
+                <img src="assets/manufacturing.jpg" alt="Manufacturing Intelligence Asset" loading="lazy">
+                <div class="industry-card-content">
+                    <h3>Manufacturing</h3>
+                </div>
+            </div>
+        </div>
     </div>
-
-  </div>
 </section>
 
-<section id="about" class="section">
-  <div class="container">
-
-    <h2>Why DeepGenX</h2>
-
-    <div class="team-image-container">
-      <img
-        class="team-img"
-        src="assets/team-consulting.jpg"
-        alt="DeepGenX Consulting Team"
-        loading="lazy"
-      >
+<section id="partners" class="partners section">
+    <div class="container">
+        <h2>Strategic Integrations</h2>
+        <p class="section-subtitle">We seamlessly deploy cloud and workflow native intelligence within your current enterprise architecture.</p>
+        <div class="partner-logos">
+            <img src="assets/aws-logo.png" alt="Amazon Web Services Integration" loading="lazy">
+            <img src="assets/microsoft-logo.png" alt="Microsoft Integration" loading="lazy">
+            <img src="assets/google-cloud-logo.png" alt="Google Cloud Platform Integration" loading="lazy">
+            <img src="assets/salesforce-logo.png" alt="Salesforce Data Ecosystem Integration" loading="lazy">
+            <img src="assets/hubspot-logo.png" alt="HubSpot CRM Suite Integration" loading="lazy">
+        </div>
     </div>
-
-    <p>
-      Trusted enterprise partner focused on measurable
-      business outcomes through AI innovation, automation,
-      and digital transformation.
-    </p>
-
-  </div>
 </section>
 
-<section id="contact" class="section dark">
-  <div class="container">
+<section id="about" class="about">
+    <div class="container about-grid">
+        <div class="about-image">
+            <img src="assets/team-consulting.jpg" alt="DeepGenX Elite Consulting Team Portfolio" loading="lazy">
+        </div>
+        <div class="about-content">
+            <h2>Why DeepGenX</h2>
+            <p>
+                As a trusted enterprise partner, we cut through the noise of AI hype to focus strictly on measurable business outcomes.
+            </p>
+            <p>
+                Our engineering teams deliver production-grade automation, absolute transparency, and state-of-the-art secure digital transformations optimized for localized and global scaling requirements.
+            </p>
+        </div>
+    </div>
+</section>
 
-    <h2>Contact Us</h2>
-
-    <form name="contact" method="POST" data-netlify="true">
-
-      <input type="hidden" name="form-name" value="contact">
-
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        required
-      >
-
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        required
-      >
-
-      <textarea
-        name="message"
-        placeholder="Message"
-        rows="5"
-      ></textarea>
-
-      <button type="submit">
-        Send Message
-      </button>
-
-    </form>
-
-  </div>
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.7)">Partner with DeepGenX to accelerate your transformation today.</p>
+        <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Message" rows="5" required></textarea>
+            <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer;">Send Message</button>
+        </form>
+    </div>
 </section>
 
 <footer>
-  <div class="container">
-    <p>&copy; 2026 DeepGenX Pty Ltd. All Rights Reserved.</p>
-  </div>
+    <div class="container">
+        <p>&copy; 2026 DeepGenX Pty Ltd. All Rights Reserved.</p>
+    </div>
 </footer>
 
-<script src="script.js"></script>
+<button id="scrollTop" aria-label="Scroll to top" style="position:fixed; bottom:20px; right:20px; display:none; background:var(--primary); color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; z-index:2000;">↑</button>
 
+<script src="script.js"></script>
 </body>
 </html>
